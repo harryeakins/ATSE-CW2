@@ -1,6 +1,7 @@
 package com.acmetelecom;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,8 +14,13 @@ class FilePrinter implements Printer {
     
     private FilePrinter() {
     	try {
+    		File file = new java.io.File("out.html");
+    		if (file.exists()) {
+    			//delete old file if it exists
+    			file.delete();
+    		}
     		out = new BufferedWriter(new FileWriter("out.html", true));
-		} catch (FileNotFoundException e) {
+    	} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
