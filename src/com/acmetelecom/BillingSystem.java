@@ -12,13 +12,18 @@ import java.util.*;
 public class BillingSystem {
 
     private List<CallEvent> callLog = new ArrayList<CallEvent>();
-
+    private TimeGetter timeGetter;
+    
+    public BillingSystem(TimeGetter timeGetter) {
+    	this.timeGetter = timeGetter;
+    }
+    
     public void callInitiated(String caller, String callee) {
-        callLog.add(new CallStart(caller, callee));
+        callLog.add(new CallStart(caller, callee, timeGetter.getCurrentTime()));
     }
 
     public void callCompleted(String caller, String callee) {
-        callLog.add(new CallEnd(caller, callee));
+        callLog.add(new CallEnd(caller, callee, timeGetter.getCurrentTime()));
     }
 
     public void createCustomerBills() {
