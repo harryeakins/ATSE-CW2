@@ -18,3 +18,7 @@ Harry Eakins
 Hui Tay
 Sheryl Liang
 Valdas Kriauciukas
+
+TASKS:
+1) Change offpeak/peak pricing plan in BillingSystem.java
+2) Integrate & test Dummy System time, acceptance testing doing html diffs?
