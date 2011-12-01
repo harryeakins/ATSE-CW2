@@ -4,16 +4,13 @@ import com.acmetelecom.customer.Customer;
 
 import java.util.List;
 
-public class BillGenerator {
-
-    public void send(Customer customer, List<BillingSystem.LineItem> calls, String totalBill) {
-
-        Printer printer = FilePrinter.getInstance();
-        printer.printHeading(customer.getFullName(), customer.getPhoneNumber(), customer.getPricePlan());
-        for (BillingSystem.LineItem call : calls) {
-            printer.printItem(call.date(), call.callee(), call.durationMinutes(), MoneyFormatter.penceToPounds(call.cost()));
-        }
-        printer.printTotal(totalBill);
-    }
-
+/**
+ * Created by IntelliJ IDEA.
+ * User: elatier
+ * Date: 01/12/11
+ * Time: 16:44
+ * To change this template use File | Settings | File Templates.
+ */
+public interface BillGenerator {
+    void send(Customer customer, List<BillingSystem.LineItem> calls, String totalBill);
 }

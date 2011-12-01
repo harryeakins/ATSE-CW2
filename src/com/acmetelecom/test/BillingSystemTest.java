@@ -1,7 +1,7 @@
 package com.acmetelecom.test;
 
-import com.acmetelecom.BillGenerator;
 import com.acmetelecom.BillingSystem;
+import com.acmetelecom.FileBillGenerator;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 29, 14, 0, 0));
 		times.add(new Date(2011, 11, 29, 14, 20, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
@@ -25,7 +25,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 25, 19, 0, 0));
 		times.add(new Date(2011, 11, 25, 19, 20, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
@@ -36,7 +36,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 27, 18, 50, 0));
 		times.add(new Date(2011, 11, 27, 19, 20, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
@@ -47,7 +47,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 27, 6, 50, 0));
 		times.add(new Date(2011, 11, 27, 7, 20, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
@@ -58,7 +58,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 27, 6, 50, 0));
 		times.add(new Date(2011, 11, 27, 19, 10, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
@@ -69,7 +69,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 27, 18, 50, 0));
 		times.add(new Date(2011, 11, 28, 7, 10, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
@@ -80,7 +80,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 27, 21, 0, 0));
 		times.add(new Date(2011, 11, 28, 16, 0, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
@@ -91,7 +91,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 27, 9, 0, 0));
 		times.add(new Date(2011, 11, 28, 4, 0, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new BillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
