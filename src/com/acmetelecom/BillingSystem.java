@@ -13,9 +13,11 @@ public class BillingSystem {
 
     private List<CallEvent> callLog = new ArrayList<CallEvent>();
     private TimeGetter timeGetter;
-    
-    public BillingSystem(TimeGetter timeGetter) {
+    private BillGenerator billGenerator;
+
+    public BillingSystem(TimeGetter timeGetter, BillGenerator billGenerator) {
     	this.timeGetter = timeGetter;
+        this.billGenerator = billGenerator;
     }
     
     public void callInitiated(String caller, String callee) {
@@ -106,7 +108,7 @@ public class BillingSystem {
             items.add(new LineItem(call, callCost));
         }
 
-        new BillGenerator().send(customer, items, MoneyFormatter.penceToPounds(totalBill));
+        billGenerator.send(customer, items, MoneyFormatter.penceToPounds(totalBill));
     }
 
     static class LineItem {
