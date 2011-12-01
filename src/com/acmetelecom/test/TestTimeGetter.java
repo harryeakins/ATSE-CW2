@@ -1,9 +1,9 @@
 package com.acmetelecom.test;
 
+import com.acmetelecom.TimeGetter;
+
 import java.util.Date;
 import java.util.List;
-
-import com.acmetelecom.TimeGetter;
 
 public class TestTimeGetter implements TimeGetter {
 
@@ -12,7 +12,7 @@ public class TestTimeGetter implements TimeGetter {
 	public TestTimeGetter(List<Date> times) {
 		this.times = times;
 	}
-	@Override
+
 	public long getCurrentTime() {
 		return times.remove(0).getTime();
 	}
