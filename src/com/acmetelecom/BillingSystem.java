@@ -62,13 +62,33 @@ public class BillingSystem {
 
             Tariff tariff = CentralTariffDatabase.getInstance().tarriffFor(customer);
 
-            BigDecimal cost;
+            BigDecimal cost = new BigDecimal(0);
 
             DaytimePeakPeriod peakPeriod = new DaytimePeakPeriod();
-            if (peakPeriod.offPeak(call.startTime()) && peakPeriod.offPeak(call.endTime()) && call.durationSeconds() < 12 * 60 * 60) {
-                cost = new BigDecimal(call.durationSeconds()).multiply(tariff.offPeakRate());
+            
+            int duration = call.durationSeconds();
+            int TWELVEHOURS = 12*60*60; 
+            boolean offPeak = peakPeriod.offPeak(call.startTime());
+            /* Mod by 12 hour blocks if necessary */
+            while(duration>TWELVEHOURS){
+            	offPeak = !offPeak;
+            	if (offPeak) cost = cost.add(new BigDecimal(TWELVEHOURS).multiply(tariff.offPeakRate()));
+            	else cost = cost.add(new BigDecimal(TWELVEHOURS).multiply(tariff.peakRate()));	 
+            	duration-=TWELVEHOURS;
+            }
+            /* Calculate (remainder) block */
+            if (peakPeriod.offPeak(call.startTime()) && peakPeriod.offPeak(call.endTime())) {
+            	cost = cost.add(new BigDecimal(duration).multiply(tariff.offPeakRate()));
+            } else if (!peakPeriod.offPeak(call.startTime()) && peakPeriod.offPeak(call.endTime())) {
+            	int duration1 = duration - peakPeriod.peakDiff(call.startTime());
+            	cost = cost.add(new BigDecimal(duration1).multiply(tariff.offPeakRate()));
+            	cost = cost.add(new BigDecimal(duration-duration1).multiply(tariff.peakRate()));
+            } else if (peakPeriod.offPeak(call.startTime()) && !peakPeriod.offPeak(call.endTime())) {
+            	int duration1 = duration - peakPeriod.offPeakDiff(call.startTime());
+            	cost = cost.add(new BigDecimal(duration1).multiply(tariff.peakRate()));
+            	cost = cost.add(new BigDecimal(duration-duration1).multiply(tariff.offPeakRate()));
             } else {
-                cost = new BigDecimal(call.durationSeconds()).multiply(tariff.peakRate());
+            	cost = cost.add(new BigDecimal(duration).multiply(tariff.peakRate()));
             }
 
             cost = cost.setScale(0, RoundingMode.HALF_UP);
