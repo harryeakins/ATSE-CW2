@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link href="files/css/fitnesse.css" rel="stylesheet" type="text/css" />
+
+    <title>Error Conditions</title>
+  </head>
+
+  <body><h1>Error Conditions</h1><table border="0" cellpadding="">
+      <tr>
+        <td colspan="3">Given the following products</td>
+      </tr>
+
+      <tr>
+        <td>Name</td>
+
+        <td>Barcode</td>
+
+        <td>Unit Price</td>
+      </tr>
+
+      <tr>
+        <td>Milk</td>
+
+        <td>11111111</td>
+
+        <td>0.50</td>
+      </tr>
+
+    </table><table border="0">
+      <tr>
+        <td>Given the checkout has been initialised</td>
+      </tr>
+    </table><p>The operator scans an unknown product.</p><table border="0">
+      <tr>
+        <td>The customer purchases</td>
+      </tr>
+	  
+	  <tr>
+	    <td>Barcode</td>
+	    <td>Displayed()</td>
+	    <td>Beeped()</td>
+	  </tr>
+	  
+      <tr>
+        <td>22222222</td>
+        <td>unknown product</td>
+        <td>true</td>
+      </tr>
+    </table>
+</body>
+</html>

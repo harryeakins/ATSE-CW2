@@ -13,6 +13,13 @@ public class TestTimeGetter implements TimeGetter {
 		this.times = times;
 	}
 
+    public TestTimeGetter() {
+	}
+
+    public void setTimes(List<Date> times) {
+		this.times = times;
+	}
+
 	public long getCurrentTime() {
 		return times.remove(0).getTime();
 	}

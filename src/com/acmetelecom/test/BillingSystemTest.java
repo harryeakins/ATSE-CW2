@@ -2,17 +2,23 @@ package com.acmetelecom.test;
 
 import com.acmetelecom.BillingSystem;
 import com.acmetelecom.FileBillGenerator;
+import com.acmetelecom.HtmlBillGenerator;
 import org.junit.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class BillingSystemTest {
+    DateFormat df = new SimpleDateFormat("yyyy, MM, dd, HH, mm, ss");
+
 	@Test
 	public void offPeak() throws Exception {
+
 		ArrayList<Date> times = new ArrayList<Date>();
-		times.add(new Date(2011, 11, 29, 14, 0, 0));
-		times.add(new Date(2011, 11, 29, 14, 20, 0));
+		times.add(df.parse("2011, 11, 29, 14, 0, 0"));
+		times.add(df.parse("2011, 11, 29, 14, 20, 0"));
 		System.out.println("Running...");
 		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
@@ -91,7 +97,7 @@ public class BillingSystemTest {
 		times.add(new Date(2011, 11, 27, 9, 0, 0));
 		times.add(new Date(2011, 11, 28, 4, 0, 0));
 		System.out.println("Running...");
-		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new FileBillGenerator());
+		BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(times), new HtmlBillGenerator());
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
