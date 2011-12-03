@@ -1,7 +1,16 @@
 import fit.ColumnFixture;
+import fit.Parse;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import com.acmetelecom.BillingSystem;
+import com.acmetelecom.FileBillGenerator;
+import com.acmetelecom.test.TestTimeGetter;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,9 +24,15 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 	public String Caller;
 	public String Callee;
     public String Time;
+    public String TimeS = null;
 
     DateFormat df = new SimpleDateFormat("yyyy, MM, dd, HH, mm, ss");
 
+	@Override
+	public void doRows(Parse rows) {
+		super.doRows(rows);
+	}
+	
  	@Override
 	public void reset() throws Exception {
         Event = null;
@@ -27,11 +42,27 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 	}
 
 	@Override
-	public void execute() throws Exception {
-        if (Event.equals("startCall")) {
-             SystemUnderTest.billingSystem.callInitiated(Caller,Callee,df.parse(Time));
-        }
-        else if (Event.equals("endCall"))
-		    SystemUnderTest.billingSystem.callCompleted(Caller,Callee,df.parse(Time));
+	public void execute() throws Exception {		
+		
+		if (Event.equals("startCall")){
+			TimeS = Time;
+		} else {
+			SystemUnderTest.setUp(TimeS, Time);
+
+			SystemUnderTest.billingSystem.callInitiated(Caller, Callee);
+			SystemUnderTest.billingSystem.callCompleted(Caller, Callee); 
+			SystemUnderTest.billingSystem.createCustomerBills();
+		}
+	}
+	
+	@Override
+	@SuppressWarnings("rawtypes")
+	public Object parse(String s, Class type) throws Exception {
+		if (type == BigDecimal.class) {
+			return new BigDecimal(s);
+		}
+		else {
+			return super.parse(s, type);
+		}
 	}
 }

@@ -121,7 +121,7 @@ public class BillingSystem {
         billGenerator.send(customer, items, MoneyFormatter.penceToPounds(totalBill));
     }
 
-    static class LineItem {
+    public static class LineItem {
         private Call call;
         private BigDecimal callCost;
 

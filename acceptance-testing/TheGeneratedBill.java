@@ -24,6 +24,14 @@ public class TheGeneratedBill extends RowFixture {
             this.Duration = Duration;
             this.Cost = Cost;
         }
+        
+        public Row(String line){
+        	String[] arr= line.split(" ");
+        	this.Time = arr[0].concat(" "+arr[1]);
+            this.Number = arr[2];
+            this.Duration = arr[3];
+            this.Cost = arr[4];
+        }
     }
 
     @Override
@@ -37,10 +45,11 @@ public class TheGeneratedBill extends RowFixture {
 
         List<Row> rows = new ArrayList<Row>();
         for (String line : SystemUnderTest.printer.output().split("\n")) {
-            rows.add(new Row(rows.size() + 1, line));
+            rows.add(new Row(line));
         }
+        //rows.add(new Row("27/12/11 09:00", "447766814143", "1140:00", "244.80"));
         return rows.toArray();
     }
 }
 
-}
+
