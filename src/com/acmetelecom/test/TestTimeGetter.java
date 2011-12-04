@@ -2,8 +2,9 @@ package com.acmetelecom.test;
 
 import com.acmetelecom.TimeGetter;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class TestTimeGetter implements TimeGetter {
 
@@ -14,10 +15,11 @@ public class TestTimeGetter implements TimeGetter {
 	}
 
     public TestTimeGetter() {
+        times = new ArrayList<Date>();
 	}
 
-    public void setTimes(List<Date> times) {
-		this.times = times;
+    public void add(Date time) {
+		this.times.add(time);
 	}
 
 	public long getCurrentTime() {
