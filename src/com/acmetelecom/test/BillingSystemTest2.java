@@ -17,7 +17,7 @@ import java.util.Date;
  * Time: 13:31
  * To change this template use File | Settings | File Templates.
  */
-public class BillingSystemTest {
+public class BillingSystemTest2 {
 
     DateFormat df;
     BillingSystem billingSystem;
