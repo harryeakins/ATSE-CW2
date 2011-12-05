@@ -1,13 +1,8 @@
 package com.acmetelecom.test;
 
-import static org.junit.Assert.assertEquals;
-
-import com.acmetelecom.BillGenerator;
 import com.acmetelecom.BillingSystem;
-import com.acmetelecom.FilePrinter;
+import com.acmetelecom.customer.CentralCustomerDatabase;
 import com.acmetelecom.customer.Tariff;
-import com.acmetelecom.customer.TariffLibrary;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +10,8 @@ import org.junit.Test;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,7 +34,8 @@ public class BillingSystemTest {
         timeGetter = new TestTimeGetter();
         billingSystem = new BillingSystem(  timeGetter, 
         									billGenerator,
-        									tariffLibrary
+        									tariffLibrary,
+                                            CentralCustomerDatabase.getInstance()
         									);
     }
 

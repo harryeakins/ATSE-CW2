@@ -1,10 +1,6 @@
 package com.acmetelecom;
 
-import com.acmetelecom.customer.CentralCustomerDatabase;
-import com.acmetelecom.customer.CentralTariffDatabase;
-import com.acmetelecom.customer.Customer;
-import com.acmetelecom.customer.Tariff;
-import com.acmetelecom.customer.TariffLibrary;
+import com.acmetelecom.customer.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -17,11 +13,13 @@ public class BillingSystem {
     private TimeGetter timeGetter;
     private BillGenerator billGenerator;
     private TariffLibrary tariffLibrary;
+    private CustomerDatabase customerDatabase;
 
-    public BillingSystem(TimeGetter timeGetter, BillGenerator billGenerator, TariffLibrary tariffLibrary) {
+    public BillingSystem(TimeGetter timeGetter, BillGenerator billGenerator, TariffLibrary tariffLibrary, CustomerDatabase customerDatabase) {
     	this.timeGetter = timeGetter;
         this.billGenerator = billGenerator;
         this.tariffLibrary = tariffLibrary;
+        this.customerDatabase = customerDatabase;
     }
     
     public void callInitiated(String caller, String callee) {
@@ -33,7 +31,7 @@ public class BillingSystem {
     }
 
     public void createCustomerBills() {
-        List<Customer> customers = CentralCustomerDatabase.getInstance().getCustomers();
+        List<Customer> customers = customerDatabase.getCustomers();
         for (Customer customer : customers) {
             createBillFor(customer);
         }

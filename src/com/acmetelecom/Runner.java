@@ -1,5 +1,6 @@
 package com.acmetelecom;
 
+import com.acmetelecom.customer.CentralCustomerDatabase;
 import com.acmetelecom.customer.CentralTariffDatabase;
 
 public class Runner {
@@ -7,7 +8,8 @@ public class Runner {
 		System.out.println("Running...");
 		BillingSystem billingSystem = new BillingSystem(new SystemTimeGetter(), 
 														new BillGenerator(new FilePrinter()),
-														CentralTariffDatabase.getInstance()
+														CentralTariffDatabase.getInstance(),
+                CentralCustomerDatabase.getInstance()
 														);
 		
 		billingSystem.callInitiated("447722113434", "447766814143");

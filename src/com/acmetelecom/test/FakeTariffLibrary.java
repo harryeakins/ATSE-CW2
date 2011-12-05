@@ -4,15 +4,26 @@ import com.acmetelecom.customer.Customer;
 import com.acmetelecom.customer.Tariff;
 import com.acmetelecom.customer.TariffLibrary;
 
+import java.util.HashMap;
+
 public class FakeTariffLibrary implements TariffLibrary {
 	Tariff tariff = Tariff.Standard;
-	@Override
-	public Tariff tarriffFor(Customer arg0) {
-		return this.tariff;
+    HashMap<String,Tariff> map;
+
+    public FakeTariffLibrary() {
+        map = new HashMap<String, Tariff>();
+    }
+
+	public Tariff tarriffFor(Customer cust) {
+        return map.get(cust.getPricePlan());
 	}
 	
 	public void setTarrif(Tariff tariff) {
 		this.tariff = tariff;
 	}
+
+    public void addTariff(String name, Tariff tariff) {
+       map.put(name,tariff);
+    }
 
 }
