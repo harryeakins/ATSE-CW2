@@ -7,7 +7,7 @@ public class Runner {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Running...");
 		BillingSystem billingSystem = new BillingSystem(new SystemTimeGetter(), 
-														new BillGenerator(new FilePrinter()),
+														new CustomerBillGenerator(new FilePrinter()),
 														CentralTariffDatabase.getInstance(),
                 CentralCustomerDatabase.getInstance()
 														);

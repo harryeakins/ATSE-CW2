@@ -1,4 +1,4 @@
-import com.acmetelecom.BillGenerator;
+import com.acmetelecom.CustomerBillGenerator;
 import com.acmetelecom.BillingSystem;
 import com.acmetelecom.fakes.FakeCustomerDatabase;
 import com.acmetelecom.fakes.FakePrinter;
@@ -19,7 +19,7 @@ public class SystemUnderTest {
     public static final FakeTariffLibrary library = new FakeTariffLibrary();
     public static final FakeCustomerDatabase database = new FakeCustomerDatabase();
 	public static final BillingSystem billingSystem = new BillingSystem(timeGetter, 
-																		new BillGenerator(printer),
+																		new CustomerBillGenerator(printer),
 																		library,
                                                                         database
 																		);
