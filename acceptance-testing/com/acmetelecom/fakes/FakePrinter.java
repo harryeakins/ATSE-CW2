@@ -5,14 +5,9 @@ import com.acmetelecom.Printer;
 
 public class FakePrinter implements Printer{
 	
-	    private static Printer instance = new FakePrinter();
-		private static StringBuilder output = new StringBuilder();
+		private StringBuilder output = new StringBuilder();
 		
-	    private FakePrinter() {
-	    }
-
-	    public static Printer getInstance() {
-	        return instance;
+	    public FakePrinter() {
 	    }
 
 	    public void printItem(String time, String callee, String duration, String cost) {
