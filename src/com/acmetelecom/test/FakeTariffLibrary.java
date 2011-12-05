@@ -15,6 +15,7 @@ public class FakeTariffLibrary implements TariffLibrary {
         map.put("Standard",Tariff.Standard);
         map.put("Business",Tariff.Business);
         map.put("Leisure",Tariff.Leisure);
+        System.out.print(Tariff.values());
     }
 
 	public Tariff tarriffFor(Customer cust) {

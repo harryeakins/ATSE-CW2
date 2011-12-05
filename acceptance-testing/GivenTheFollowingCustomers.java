@@ -25,7 +25,7 @@ public class GivenTheFollowingCustomers extends ColumnFixture {
 
 	@Override
 	public void execute() throws Exception {
-        SystemUnderTest.database.addCustomer(new Customer(PhoneNumber,FullName,PricePlan));
+        SystemUnderTest.database.addCustomer(new Customer(FullName,PhoneNumber,PricePlan));
 	}
 
     @Override
