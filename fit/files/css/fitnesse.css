@@ -465,7 +465,7 @@ table.dirListing
 /* Application-specific styles
  */
 
-td.receiptLine {
+td.billLine {
 	font-family: monospace;
 	white-space: pre;
 }

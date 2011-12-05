@@ -22,7 +22,7 @@ public class FakeBillGenerator implements BillGenerator {
         }
         printer.printTotal(totalBill);
     }
-     
+
      public String output(){
     	 return ((FakePrinter) printer).output();
      }

@@ -8,7 +8,6 @@ import com.acmetelecom.customer.Tariff;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BillingSystem {
@@ -26,16 +25,8 @@ public class BillingSystem {
         callLog.add(new CallStart(caller, callee, timeGetter.getCurrentTime()));
     }
 
-    public void callInitiated(String caller, String callee, Date currentTime) {
-        callLog.add(new CallStart(caller, callee, currentTime.getTime()));
-    }
-
     public void callCompleted(String caller, String callee) {
         callLog.add(new CallEnd(caller, callee, timeGetter.getCurrentTime()));
-    }
-
-    public void callCompleted(String caller, String callee, Date currentTime) {
-        callLog.add(new CallEnd(caller, callee, currentTime.getTime()));
     }
 
     public void createCustomerBills() {

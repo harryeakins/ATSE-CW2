@@ -5,12 +5,6 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import com.acmetelecom.BillingSystem;
-import com.acmetelecom.FileBillGenerator;
-import com.acmetelecom.test.TestTimeGetter;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,9 +18,13 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 	public String Caller;
 	public String Callee;
     public String Time;
-    public String TimeS = null;
 
     DateFormat df = new SimpleDateFormat("yyyy, MM, dd, HH, mm, ss");
+
+    void atTime(String time) throws ParseException{
+		SystemUnderTest.timeGetter.add(df.parse(time));
+
+	}
 
 	@Override
 	public void doRows(Parse rows) {
@@ -45,13 +43,11 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 	public void execute() throws Exception {		
 		
 		if (Event.equals("startCall")){
-			TimeS = Time;
-		} else {
-			SystemUnderTest.setUp(TimeS, Time);
-
-			SystemUnderTest.billingSystem.callInitiated(Caller, Callee);
-			SystemUnderTest.billingSystem.callCompleted(Caller, Callee); 
-			SystemUnderTest.billingSystem.createCustomerBills();
+            atTime(Time);
+            SystemUnderTest.billingSystem.callInitiated(Caller, Callee);
+		} else if (Event.equals("endCall")) {
+            atTime(Time);
+            SystemUnderTest.billingSystem.callCompleted(Caller, Callee);
 		}
 	}
 	
