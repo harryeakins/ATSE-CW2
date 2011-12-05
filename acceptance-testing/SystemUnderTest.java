@@ -1,5 +1,7 @@
+import com.acmetelecom.BillGenerator;
 import com.acmetelecom.BillingSystem;
-import com.acmetelecom.fakes.FakeBillGenerator;
+import com.acmetelecom.Printer;
+import com.acmetelecom.fakes.FakePrinter;
 import com.acmetelecom.test.TestTimeGetter;
 
 /**
@@ -11,8 +13,8 @@ import com.acmetelecom.test.TestTimeGetter;
  */
 public class SystemUnderTest {
 
-    public static final FakeBillGenerator printer = new FakeBillGenerator();
     public static final TestTimeGetter timeGetter = new TestTimeGetter();
-	public static final BillingSystem billingSystem = new BillingSystem(timeGetter, printer);
+    public static final FakePrinter printer = new FakePrinter();
+	public static final BillingSystem billingSystem = new BillingSystem(timeGetter, new BillGenerator(printer));
 
 }

@@ -1,7 +1,8 @@
 package com.acmetelecom.test;
 
+import com.acmetelecom.BillGenerator;
 import com.acmetelecom.BillingSystem;
-import com.acmetelecom.FileBillGenerator;
+import com.acmetelecom.FilePrinter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class BillingSystemTest {
     public void setUp() throws Exception {
         df = new SimpleDateFormat("yyyy, MM, dd, HH, mm, ss");
         timeGetter = new TestTimeGetter();
-        billingSystem = new BillingSystem(timeGetter, new FileBillGenerator());
+        billingSystem = new BillingSystem(timeGetter, new BillGenerator(new FilePrinter()));
 
     }
 

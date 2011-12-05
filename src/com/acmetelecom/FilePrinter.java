@@ -6,13 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-class FilePrinter implements Printer {
+public class FilePrinter implements Printer {
 
-    private static Printer instance = new FilePrinter();
 	// Stream to write file
     BufferedWriter out;	
     
-    private FilePrinter() {
+    public FilePrinter() {
     	try {
     		File file = new java.io.File("out.html");
     		if (file.exists()) {
@@ -27,11 +26,7 @@ class FilePrinter implements Printer {
 		}
     }
     
-    public static Printer getInstance() {
-        return instance;
-    }
-    
-    public void close(){
+    public void close() {
     	try {
 			out.close();
 		} catch (IOException e) {
