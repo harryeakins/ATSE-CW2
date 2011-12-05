@@ -4,6 +4,7 @@ import com.acmetelecom.customer.CentralCustomerDatabase;
 import com.acmetelecom.customer.CentralTariffDatabase;
 import com.acmetelecom.customer.Customer;
 import com.acmetelecom.customer.Tariff;
+import com.acmetelecom.customer.TariffLibrary;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,10 +16,12 @@ public class BillingSystem {
     private List<CallEvent> callLog = new ArrayList<CallEvent>();
     private TimeGetter timeGetter;
     private BillGenerator billGenerator;
+    private TariffLibrary tariffLibrary;
 
-    public BillingSystem(TimeGetter timeGetter, BillGenerator billGenerator) {
+    public BillingSystem(TimeGetter timeGetter, BillGenerator billGenerator, TariffLibrary tariffLibrary) {
     	this.timeGetter = timeGetter;
         this.billGenerator = billGenerator;
+        this.tariffLibrary = tariffLibrary;
     }
     
     public void callInitiated(String caller, String callee) {
@@ -63,7 +66,7 @@ public class BillingSystem {
 
         for (Call call : calls) {
 
-            Tariff tariff = CentralTariffDatabase.getInstance().tarriffFor(customer);
+            Tariff tariff = this.tariffLibrary.tarriffFor(customer);
 
             BigDecimal cost = new BigDecimal(0);
 

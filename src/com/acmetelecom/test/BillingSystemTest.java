@@ -3,6 +3,9 @@ package com.acmetelecom.test;
 import com.acmetelecom.BillGenerator;
 import com.acmetelecom.BillingSystem;
 import com.acmetelecom.FilePrinter;
+import com.acmetelecom.customer.Tariff;
+import com.acmetelecom.customer.TariffLibrary;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,8 +31,11 @@ public class BillingSystemTest {
     public void setUp() throws Exception {
         df = new SimpleDateFormat("yyyy, MM, dd, HH, mm, ss");
         timeGetter = new TestTimeGetter();
-        billingSystem = new BillingSystem(timeGetter, new BillGenerator(new FilePrinter()));
-
+        MockTariffLibrary tariffLibrary = new MockTariffLibrary();
+        billingSystem = new BillingSystem(  timeGetter, 
+        									new BillGenerator(new FilePrinter()),
+        									tariffLibrary
+        									);
     }
 
     @After
