@@ -33,20 +33,22 @@
           <td>2011-11-27 9:00:00</td>
 
         </tr>
-          <tr>
 
-          <td>startCall</td>
-          <td>447777765432</td>
-          <td>447711111111</td>
-          <td>2011-11-28 3:00:00</td>
-
-         </tr>
          <tr>
 
           <td>endCall</td>
           <td>447711232343</td>
           <td>447766814143</td>
           <td>2011-11-28 4:00:00</td>
+
+         </tr>
+
+         <tr>
+
+          <td>startCall</td>
+          <td>447777765432</td>
+          <td>447711111111</td>
+          <td>2011-11-28 3:00:00</td>
 
          </tr>
 
@@ -62,13 +64,15 @@
 
     </table>
 
-<p> This is the simple acceptance test for bill for caller 447711232343: </p>
+<p> This shows billing lines for each call, sorted by customer and time: </p>
   <table bgcolor="" border="0">
       <tr>
-        <td colspan="4">The generated bill</td>
+        <td colspan="6">The generated bill</td>
       </tr>
       
       <tr>
+        <td>Customer</td>
+        <td>PricePlan</td>
         <td>Time</td>
         <td>Number</td>
         <td>Duration</td>
@@ -76,7 +80,9 @@
       </tr>
 
       <tr class="billLine">
-       <td>27/11/11 09:00</td><td>447766814143</td><td>1140:00</td><td>244.80</td></tr>
+       <td>447711232343</td><td>Standard</td><td>27/11/11 09:00</td><td>447766814143</td><td>1140:00</td><td>244.80</td></tr>
+       <tr class="billLine">
+       <td>447777765432</td><td>Standard</td><td>28/11/11 03:00</td><td>447711111111</td><td>120:00</td><td>14.40</td></tr>
 
     </table></body>
 </html>
