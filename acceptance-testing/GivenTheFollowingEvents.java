@@ -19,7 +19,7 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 	public String Callee;
     public String Time;
 
-    DateFormat df = new SimpleDateFormat("yyyy, MM, dd, HH, mm, ss");
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     void atTime(String time) throws ParseException{
 		SystemUnderTest.timeGetter.add(df.parse(time));
