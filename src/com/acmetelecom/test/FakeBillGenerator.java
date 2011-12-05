@@ -3,16 +3,16 @@ package com.acmetelecom.test;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.acmetelecom.CustomerBillGenerator;
+import com.acmetelecom.BillGenerator;
 import com.acmetelecom.LineItem;
 import com.acmetelecom.MoneyFormatter;
 import com.acmetelecom.customer.Customer;
 
-public class FakeBillGenerator extends CustomerBillGenerator {
+public class FakeBillGenerator implements BillGenerator {
 	public String totalBill;
 	public String number;
 	public FakeBillGenerator() {
-		super(null);
+		super();
 	}
 	
 	public void setInterestingPhoneNumber(String number) {
