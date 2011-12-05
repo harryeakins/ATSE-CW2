@@ -25,11 +25,11 @@ public class BillingSystem {
     }
     
     public void callInitiated(String caller, String callee) {
-        callLog.add(new CallStart(caller, callee, timeGetter.getCurrentTime()));
+        callLog.add(CallEvent.startEvent(caller, callee, timeGetter.getCurrentTime()));
     }
 
     public void callCompleted(String caller, String callee) {
-        callLog.add(new CallEnd(caller, callee, timeGetter.getCurrentTime()));
+        callLog.add(CallEvent.endEvent(caller, callee, timeGetter.getCurrentTime()));
     }
 
     public void createCustomerBills() {
@@ -52,10 +52,10 @@ public class BillingSystem {
 
         CallEvent start = null;
         for (CallEvent event : customerEvents) {
-            if (event instanceof CallStart) {
+            if (event.getEventType() == "start") {
                 start = event;
             }
-            if (event instanceof CallEnd && start != null) {
+            if (event.getEventType() == "end" && start != null) {
                 calls.add(new Call(start, event));
                 start = null;
             }
