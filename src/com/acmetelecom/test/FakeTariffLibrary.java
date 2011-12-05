@@ -12,6 +12,9 @@ public class FakeTariffLibrary implements TariffLibrary {
 
     public FakeTariffLibrary() {
         map = new HashMap<String, Tariff>();
+        map.put("Standard",Tariff.Standard);
+        map.put("Business",Tariff.Business);
+        map.put("Leisure",Tariff.Leisure);
     }
 
 	public Tariff tarriffFor(Customer cust) {

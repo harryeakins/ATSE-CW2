@@ -64,7 +64,7 @@ public class BillingSystem {
 
         for (Call call : calls) {
 
-            Tariff tariff = this.tariffLibrary.tarriffFor(customer);
+            Tariff tariff = tariffLibrary.tarriffFor(customer);
 
             BigDecimal cost = new BigDecimal(0);
 

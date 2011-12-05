@@ -1,4 +1,3 @@
-import com.acmetelecom.customer.Tariff;
 import fit.ColumnFixture;
 
 import java.math.BigDecimal;
@@ -25,7 +24,6 @@ public class GivenTheFollowingTariffs extends ColumnFixture {
 
 	@Override
 	public void execute() throws Exception {
-        SystemUnderTest.library.addTariff("Standard", Tariff.Standard);
 
 	}
 
