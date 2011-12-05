@@ -11,11 +11,11 @@ public class BillingSystem {
 
     private List<CallEvent> callLog = new ArrayList<CallEvent>();
     private TimeGetter timeGetter;
-    private BillGenerator billGenerator;
+    private CustomerBillGenerator billGenerator;
     private TariffLibrary tariffLibrary;
     private CustomerDatabase customerDatabase;
 
-    public BillingSystem(TimeGetter timeGetter, BillGenerator billGenerator, TariffLibrary tariffLibrary, CustomerDatabase customerDatabase) {
+    public BillingSystem(TimeGetter timeGetter, CustomerBillGenerator billGenerator, TariffLibrary tariffLibrary, CustomerDatabase customerDatabase) {
     	this.timeGetter = timeGetter;
         this.billGenerator = billGenerator;
         this.tariffLibrary = tariffLibrary;
