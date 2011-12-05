@@ -1,5 +1,7 @@
 package com.acmetelecom.test;
 
+import static org.junit.Assert.assertEquals;
+
 import com.acmetelecom.BillGenerator;
 import com.acmetelecom.BillingSystem;
 import com.acmetelecom.FilePrinter;
@@ -26,14 +28,15 @@ public class BillingSystemTest {
     DateFormat df;
     BillingSystem billingSystem;
     TestTimeGetter timeGetter;
+    FakeTariffLibrary tariffLibrary = new FakeTariffLibrary();
+    FakeBillGenerator billGenerator = new FakeBillGenerator();
 
     @Before
     public void setUp() throws Exception {
         df = new SimpleDateFormat("yyyy, MM, dd, HH, mm, ss");
         timeGetter = new TestTimeGetter();
-        MockTariffLibrary tariffLibrary = new MockTariffLibrary();
         billingSystem = new BillingSystem(  timeGetter, 
-        									new BillGenerator(new FilePrinter()),
+        									billGenerator,
         									tariffLibrary
         									);
     }
@@ -44,11 +47,16 @@ public class BillingSystemTest {
 
 	@Test
 	public void offPeak() throws Exception {
-		timeGetter.add(df.parse("2011, 11, 29, 14, 0, 0"));
+		tariffLibrary.setTarrif(Tariff.Standard); // 0.2 pence per second
+		billGenerator.setInterestingPhoneNumber("447711232343");
+		
+		timeGetter.add(df.parse("2011, 11, 29, 14, 0, 0")); // 20 minutes = 1200 seconds
 		timeGetter.add(df.parse("2011, 11, 29, 14, 20, 0"));
 		billingSystem.callInitiated("447711232343", "447766814143");
 		billingSystem.callCompleted("447711232343", "447766814143");
 		billingSystem.createCustomerBills();
+		
+		assertEquals("6.00", billGenerator.totalBill); // 1200 sec * 0.2 p/sec = £6.00
 	}
 	@Test
 	public void Peak() throws Exception {

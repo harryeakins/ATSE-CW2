@@ -40,7 +40,7 @@ public class BillingSystem {
         callLog.clear();
     }
 
-    private void createBillFor(Customer customer) {
+    public void createBillFor(Customer customer) {
         List<CallEvent> customerEvents = new ArrayList<CallEvent>();
         for (CallEvent callEvent : callLog) {
             if (callEvent.getCaller().equals(customer.getPhoneNumber())) {
