@@ -8,22 +8,22 @@ import java.util.Date;
 
 public class TestTimeGetter implements TimeGetter {
 
-	private List<Date> times;
+	private Date time;
 	
-	public TestTimeGetter(List<Date> times) {
-		this.times = times;
+	public TestTimeGetter(Date time) {
+		this.time = time;
 	}
 
     public TestTimeGetter() {
-        times = new ArrayList<Date>();
+        this.time = new Date();
 	}
 
-    public void add(Date time) {
-		this.times.add(time);
+    public void set(Date time) {
+		this.time = time;
 	}
 
 	public long getCurrentTime() {
-		return times.remove(0).getTime();
+		return time.getTime();
 	}
 
 }

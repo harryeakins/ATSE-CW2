@@ -22,7 +22,7 @@ public class GivenTheFollowingEvents extends ColumnFixture {
     DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     void atTime(String time) throws ParseException{
-		SystemUnderTest.timeGetter.add(df.parse(time));
+		SystemUnderTest.timeGetter.set(df.parse(time));
 
 	}
 
