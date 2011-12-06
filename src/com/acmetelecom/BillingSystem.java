@@ -70,39 +70,36 @@ public class BillingSystem {
 
             DaytimePeakPeriod peakPeriod = new DaytimePeakPeriod();
             
-
-            int duration = call.durationSeconds();
-            int TWELVEHOURS = 12*60*60; 
-            boolean offPeak = peakPeriod.offPeak(call.startTime());
+            final int TWELVEHOURS = 12*60*60;
+            int callDuration = call.durationSeconds();
             
+            boolean isOffPeak = peakPeriod.offPeak(call.startTime());
             
-            int duration1;
-            if (offPeak) {
-            	duration1 = peakPeriod.offPeakDiff(call.startTime()) - (int)(call.startTime().getTime() / 1000);
-            	if (duration <= duration1)
-            		duration1 = duration;
-            	cost = cost.add(new BigDecimal(duration1).multiply(tariff.offPeakRate()));
+            int firstTimeBlock;
+            if (isOffPeak) {
+            	firstTimeBlock = peakPeriod.nextPeakBoundary(call.startTime()) - (int)(call.startTime().getTime() / 1000);
+            	if (callDuration < firstTimeBlock)
+            		firstTimeBlock = callDuration;
+            	cost = cost.add(new BigDecimal(firstTimeBlock).multiply(tariff.offPeakRate()));
             } else {
-            	duration1 = peakPeriod.peakDiff(call.startTime()) - (int)(call.startTime().getTime() / 1000);
-            	if (duration <= duration1)
-            		duration1 = duration;
-            	cost = cost.add(new BigDecimal(duration1).multiply(tariff.peakRate()));	 
+            	firstTimeBlock = peakPeriod.nextOffPeakBoundary(call.startTime()) - (int)(call.startTime().getTime() / 1000);
+            	if (callDuration < firstTimeBlock)
+            		firstTimeBlock = callDuration;
+            	cost = cost.add(new BigDecimal(firstTimeBlock).multiply(tariff.peakRate()));	 
             }
 
-            duration -= duration1;
+            callDuration -= firstTimeBlock;
 
-            /* Mod by 12 hour blocks if necessary */
-            offPeak = !offPeak;
-            while(duration>TWELVEHOURS){
-            	
-            	if (offPeak) cost = cost.add(new BigDecimal(TWELVEHOURS).multiply(tariff.offPeakRate()));
-            	else cost = cost.add(new BigDecimal(TWELVEHOURS).multiply(tariff.peakRate()));	 
-            	duration-=TWELVEHOURS;
-            	offPeak = !offPeak;
+            isOffPeak = !isOffPeak;
+            while(callDuration > TWELVEHOURS){
+            	cost = isOffPeak ? cost.add(new BigDecimal(TWELVEHOURS).multiply(tariff.offPeakRate()))
+            					 : cost.add(new BigDecimal(TWELVEHOURS).multiply(tariff.peakRate()));
+            	callDuration-=TWELVEHOURS;
+            	isOffPeak = !isOffPeak;
             }
             
-            cost = offPeak ? cost.add(new BigDecimal(duration).multiply(tariff.offPeakRate())) 
-            		       : cost.add(new BigDecimal(duration).multiply(tariff.peakRate()));	 
+            cost = isOffPeak ? cost.add(new BigDecimal(callDuration).multiply(tariff.offPeakRate())) 
+            		         : cost.add(new BigDecimal(callDuration).multiply(tariff.peakRate()));	 
            
             cost = cost.setScale(0, RoundingMode.HALF_UP);
             BigDecimal callCost = cost;

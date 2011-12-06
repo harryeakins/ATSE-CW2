@@ -12,7 +12,7 @@ class DaytimePeakPeriod {
         return hour < 7 || hour >= 19;
     }
     
-    public int offPeakDiff(Date time){
+    public int nextPeakBoundary(Date time){
     	
     	Date nextPeak = new Date(time.getTime());
     	if (nextPeak.getHours() < 7) {
@@ -29,7 +29,7 @@ class DaytimePeakPeriod {
         return (int)(nextPeak.getTime() / 1000);   	
     }
     
-    public int peakDiff(Date time){
+    public int nextOffPeakBoundary(Date time){
         Date nextPeak = new Date(time.getTime());
   		nextPeak.setHours(19);
    		nextPeak.setMinutes(0);

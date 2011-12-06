@@ -14,10 +14,10 @@ import java.text.SimpleDateFormat;
  * To change this template use File | Settings | File Templates.
  */
 public class GivenTheFollowingEvents extends ColumnFixture {
-    public String Event;
-	public String Caller;
-	public String Callee;
-    public String Time;
+    public String event;
+	public String caller;
+	public String callee;
+    public String time;
 
     DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -33,21 +33,21 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 	
  	@Override
 	public void reset() throws Exception {
-        Event = null;
-        Caller = null;
-        Callee = null;
-        Time = null;
+        event = null;
+        caller = null;
+        callee = null;
+        time = null;
 	}
 
 	@Override
 	public void execute() throws Exception {		
 		
-		if (Event.equals("startCall")){
-            atTime(Time);
-            SystemUnderTest.billingSystem.callInitiated(Caller, Callee);
-		} else if (Event.equals("endCall")) {
-            atTime(Time);
-            SystemUnderTest.billingSystem.callCompleted(Caller, Callee);
+		if (event.equals("startCall")){
+            atTime(time);
+            SystemUnderTest.billingSystem.callInitiated(caller, callee);
+		} else if (event.equals("endCall")) {
+            atTime(time);
+            SystemUnderTest.billingSystem.callCompleted(caller, callee);
 		}
 	}
 	
