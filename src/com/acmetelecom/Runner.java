@@ -7,10 +7,9 @@ public class Runner {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Running...");
 		BillingSystem billingSystem = new BillingSystem(new SystemTimeGetter(), 
-														new CustomerBillGenerator(new FilePrinter()),
-														CentralTariffDatabase.getInstance(),
-                CentralCustomerDatabase.getInstance()
-														);
+														new SystemBillGenerator(new FilePrinter()),
+														new SystemTariffLibrary(CentralTariffDatabase.getInstance()),
+														new SystemCustomerDatabase(CentralCustomerDatabase.getInstance()));
 		
 		billingSystem.callInitiated("447722113434", "447766814143");
 		sleepSeconds(20);
