@@ -12,20 +12,20 @@ import java.math.BigDecimal;
  * To change this template use File | Settings | File Templates.
  */
 public class GivenTheFollowingCustomers extends ColumnFixture {
-    public String phoneNumber;
-	public String fullName;
-	public String pricePlan;
+    public String PhoneNumber;
+	public String FullName;
+	public String PricePlan;
 
  	@Override
 	public void reset() throws Exception {
-        phoneNumber = null;
-        fullName = null;
-        pricePlan = null;
+        PhoneNumber = null;
+        FullName = null;
+        PricePlan = null;
 	}
 
 	@Override
 	public void execute() throws Exception {
-        SystemUnderTest.database.addCustomer(new Customer(fullName, phoneNumber, pricePlan));
+        SystemUnderTest.database.addCustomer(new Customer(FullName,PhoneNumber,PricePlan));
 	}
 
     @Override

@@ -4,9 +4,10 @@ public class CallEvent {
     private String caller;
     private String callee;
     private long time;
-    private String type;
+    private EventType type;
+    public enum EventType { START, END }
 
-    private CallEvent(String caller, String callee, long timeStamp, String type) {
+    private CallEvent(String caller, String callee, long timeStamp, EventType type) {
         this.caller = caller;
         this.callee = callee;
         this.time = timeStamp;
@@ -14,11 +15,11 @@ public class CallEvent {
     }
     
     public static CallEvent endEvent(String caller, String callee, long timeStamp) {
-    	return new CallEvent(caller, callee, timeStamp, "end");
+    	return new CallEvent(caller, callee, timeStamp, EventType.END);
     }
     
     public static CallEvent startEvent(String caller, String callee, long timeStamp) {
-    	return new CallEvent(caller, callee, timeStamp, "start");
+    	return new CallEvent(caller, callee, timeStamp, EventType.START);
     }
 
     public String getCaller() {
@@ -29,7 +30,7 @@ public class CallEvent {
         return callee;
     }
     
-    public String getEventType() {
+    public EventType getEventType() {
     	return type;
     }
 

@@ -10,15 +10,15 @@ import java.math.BigDecimal;
  * To change this template use File | Settings | File Templates.
  */
 public class GivenTheFollowingTariffs extends ColumnFixture {
-    public String tariffName;
-	public BigDecimal peakRate;
-	public BigDecimal offPeakRate;
+    public String TariffName;
+	public BigDecimal PeakRate;
+	public BigDecimal OffPeakRate;
 
  	@Override
 	public void reset() throws Exception {
-        tariffName = null;
-        peakRate = null;
-        offPeakRate = null;
+        TariffName = null;
+        PeakRate = null;
+        OffPeakRate = null;
 
 	}
 

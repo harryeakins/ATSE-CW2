@@ -13,30 +13,30 @@ import java.util.List;
 public class TheGeneratedBill extends RowFixture {
 
     public static class Row {
-        public String customer;
-        public String time;
-        public String number;
-        public String duration;
-        public String cost;
-        public String pricePlan;
+        public String Customer;
+        public String Time;
+        public String Number;
+        public String Duration;
+        public String Cost;
+        public String PricePlan;
 
         public Row(String Customer,String PricePlan,String Time,String Number,String Duration,String Cost) {
-            this.customer = Customer;
-            this.pricePlan = PricePlan;
-            this.time = Time;
-            this.number = Number;
-            this.duration = Duration;
-            this.cost = Cost;
+            this.Customer = Customer;
+            this.PricePlan = PricePlan;
+            this.Time = Time;
+            this.Number = Number;
+            this.Duration = Duration;
+            this.Cost = Cost;
         }
         
         public Row(String line){
         	String[] arr= line.split(" ");
-            this.customer = arr[0];
-            this.pricePlan = arr[1];
-        	this.time = arr[2].concat(" "+arr[3]);
-            this.number = arr[4];
-            this.duration = arr[5];
-            this.cost = arr[6];
+            this.Customer = arr[0];
+            this.PricePlan = arr[1];
+        	this.Time = arr[2].concat(" "+arr[3]);
+            this.Number = arr[4];
+            this.Duration = arr[5];
+            this.Cost = arr[6];
         }
     }
 

@@ -1,5 +1,6 @@
 package com.acmetelecom;
 
+import com.acmetelecom.CallEvent.EventType;
 import com.acmetelecom.customer.*;
 
 import java.math.BigDecimal;
@@ -50,10 +51,10 @@ public class BillingSystem {
 
         CallEvent start = null;
         for (CallEvent event : customerEvents) {
-            if (event.getEventType() == "start") {
+            if (event.getEventType() == EventType.START) {
                 start = event;
             }
-            if (event.getEventType() == "end" && start != null) {
+            if (event.getEventType() == EventType.END && start != null) {
                 calls.add(new Call(start, event));
                 start = null;
             }
