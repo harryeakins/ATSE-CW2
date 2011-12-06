@@ -2,9 +2,9 @@ package com.acmetelecom.test;
 import java.util.List;
 
 import org.jmock.Expectations;
+import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
 import org.jmock.integration.junit4.JUnit4Mockery;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,7 +16,7 @@ import com.acmetelecom.customer.*;
 @RunWith(JMock.class)
 public class MockBillingSystemTest {
 
-	@Rule public final JUnit4Mockery context = new JUnit4Mockery();
+	public final Mockery context = new Mockery();
 	
     BillingSystem billingSystem;
     final TimeGetter timeGetter = context.mock(TimeGetter.class);
