@@ -3,20 +3,31 @@ package com.acmetelecom;
 import java.util.Calendar;
 import java.util.Date;
 
-class DaytimePeakPeriod {
-
+class DaytimePeakPeriod {	
+	private final int startPeakTime;
+	private final int endPeakTime;
+	
+	/**
+	 * @param start
+	 * @param end
+	 */
+	public DaytimePeakPeriod(int start, int end){
+		startPeakTime = start;
+		endPeakTime = end;
+	}
+	
     public boolean offPeak(Date time) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(time);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        return hour < 7 || hour >= 19;
+        return hour < startPeakTime || hour >= endPeakTime;
     }
     
     public int nextPeakBoundary(Date time){
     	
     	Date nextPeak = new Date(time.getTime());
-    	if (nextPeak.getHours() < 7) {
-    		nextPeak.setHours(7);
+    	if (nextPeak.getHours() < startPeakTime) {
+    		nextPeak.setHours(startPeakTime);
     		nextPeak.setMinutes(0);
     		nextPeak.setSeconds(0);
     	} else {
@@ -31,7 +42,7 @@ class DaytimePeakPeriod {
     
     public int nextOffPeakBoundary(Date time){
         Date nextPeak = new Date(time.getTime());
-  		nextPeak.setHours(19);
+  		nextPeak.setHours(endPeakTime);
    		nextPeak.setMinutes(0);
    		nextPeak.setSeconds(0);    	
         return (int)(nextPeak.getTime() / 1000);   	

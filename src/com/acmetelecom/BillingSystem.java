@@ -69,7 +69,7 @@ public class BillingSystem {
 
             BigDecimal cost = new BigDecimal(0);
 
-            DaytimePeakPeriod peakPeriod = new DaytimePeakPeriod();
+            DaytimePeakPeriod peakPeriod = new DaytimePeakPeriod(7, 19);
             
             final int TWELVEHOURS = 12*60*60;
             int callDuration = call.durationSeconds();
