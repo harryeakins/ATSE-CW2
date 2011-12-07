@@ -44,8 +44,8 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	@SuppressWarnings("rawtypes")
 	public Object parse(String s, Class type) throws Exception {
 		if (type == BigDecimal.class) {
 			return new BigDecimal(s);

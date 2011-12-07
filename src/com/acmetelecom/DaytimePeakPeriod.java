@@ -23,7 +23,8 @@ class DaytimePeakPeriod {
         return hour < startPeakTime || hour >= endPeakTime;
     }
     
-    public int nextPeakBoundary(Date time){
+    @SuppressWarnings("deprecation")
+	public int nextPeakBoundary(Date time){
     	
     	Date nextPeak = new Date(time.getTime());
     	if (nextPeak.getHours() < startPeakTime) {
@@ -40,7 +41,8 @@ class DaytimePeakPeriod {
         return (int)(nextPeak.getTime() / 1000);   	
     }
     
-    public int nextOffPeakBoundary(Date time){
+    @SuppressWarnings("deprecation")
+	public int nextOffPeakBoundary(Date time){
         Date nextPeak = new Date(time.getTime());
   		nextPeak.setHours(endPeakTime);
    		nextPeak.setMinutes(0);

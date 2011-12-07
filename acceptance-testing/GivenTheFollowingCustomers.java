@@ -1,6 +1,5 @@
 import com.acmetelecom.SystemCustomer;
 import com.acmetelecom.customer.Customer;
-import com.acmetelecom.fakes.FakeCustomer;
 
 import fit.ColumnFixture;
 import fit.Parse;
@@ -29,8 +28,8 @@ public class GivenTheFollowingCustomers extends ColumnFixture {
 		super.doRows(rows);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	@SuppressWarnings("rawtypes")
 	public Object parse(String s, Class type) throws Exception {
 		if (type == BigDecimal.class) {
 			return new BigDecimal(s);
