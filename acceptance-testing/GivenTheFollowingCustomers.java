@@ -5,13 +5,6 @@ import fit.Parse;
 
 import java.math.BigDecimal;
 
-/**
- * Created by IntelliJ IDEA.
- * User: elatier
- * Date: 05/12/11
- * Time: 18:00
- * To change this template use File | Settings | File Templates.
- */
 public class GivenTheFollowingCustomers extends ColumnFixture {
     public String PhoneNumber;
 	public String FullName;
@@ -35,8 +28,8 @@ public class GivenTheFollowingCustomers extends ColumnFixture {
 		super.doRows(rows);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	@SuppressWarnings("rawtypes")
 	public Object parse(String s, Class type) throws Exception {
 		if (type == BigDecimal.class) {
 			return new BigDecimal(s);

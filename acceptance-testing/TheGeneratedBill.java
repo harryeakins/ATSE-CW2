@@ -3,13 +3,6 @@ import fit.RowFixture;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: elatier
- * Date: 02/12/11
- * Time: 23:07
- * To change this template use File | Settings | File Templates.
- */
 public class TheGeneratedBill extends RowFixture {
 
     public static class Row {

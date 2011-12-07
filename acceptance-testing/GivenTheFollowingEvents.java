@@ -6,13 +6,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by IntelliJ IDEA.
- * User: elatier
- * Date: 02/12/11
- * Time: 21:43
- * To change this template use File | Settings | File Templates.
- */
 public class GivenTheFollowingEvents extends ColumnFixture {
     public String Event;
 	public String Caller;
@@ -51,8 +44,8 @@ public class GivenTheFollowingEvents extends ColumnFixture {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	@SuppressWarnings("rawtypes")
 	public Object parse(String s, Class type) throws Exception {
 		if (type == BigDecimal.class) {
 			return new BigDecimal(s);

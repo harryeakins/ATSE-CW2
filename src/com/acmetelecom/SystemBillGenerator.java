@@ -1,7 +1,5 @@
 package com.acmetelecom;
 
-import com.acmetelecom.customer.Customer;
-
 import java.math.BigDecimal;
 import java.util.List;
 
