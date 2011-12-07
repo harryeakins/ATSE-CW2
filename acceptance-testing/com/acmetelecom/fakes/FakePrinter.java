@@ -23,6 +23,10 @@ public class FakePrinter implements IPrinter {
     	return output.toString();
     }
 
+    public void reset(){
+    	output = new StringBuilder();
+    }
+
 	public void printHeading(String name, String phoneNumber,
 				String pricePlan) {
         currentCustomer = phoneNumber;

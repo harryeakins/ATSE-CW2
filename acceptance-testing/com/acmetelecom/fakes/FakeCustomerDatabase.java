@@ -3,7 +3,6 @@ package com.acmetelecom.fakes;
 import com.acmetelecom.ICustomer;
 import com.acmetelecom.ICustomerDatabase;
 import com.acmetelecom.SystemCustomer;
-import com.acmetelecom.customer.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,5 +19,9 @@ public class FakeCustomerDatabase  implements ICustomerDatabase {
 
     public void addCustomer(SystemCustomer customer) {
          customers.add(customer);
+    }
+
+    public void reset() {
+        customers = new ArrayList<ICustomer>();
     }
 }

@@ -47,6 +47,7 @@ public class TheGeneratedBill extends RowFixture {
 
     @Override
     public Object[] query() throws Exception {
+        SystemUnderTest.printer.reset();
         SystemUnderTest.billingSystem.createCustomerBills();
 
         List<Row> rows = new ArrayList<Row>();

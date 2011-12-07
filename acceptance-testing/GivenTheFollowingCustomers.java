@@ -1,7 +1,5 @@
 import com.acmetelecom.SystemCustomer;
 import com.acmetelecom.customer.Customer;
-import com.acmetelecom.fakes.FakeCustomer;
-
 import fit.ColumnFixture;
 import fit.Parse;
 
@@ -33,6 +31,7 @@ public class GivenTheFollowingCustomers extends ColumnFixture {
 
     @Override
 	public void doRows(Parse rows) {
+        SystemUnderTest.database.reset();
 		super.doRows(rows);
 	}
 
