@@ -11,12 +11,12 @@ import java.util.List;
 public class BillingSystem {
 
     private List<CallEvent> callLog = new ArrayList<CallEvent>();
-    private TimeGetter timeGetter;
+    private ITimeGetter timeGetter;
     private IBillGenerator billGenerator;
     private ITariffLibrary tariffLibrary;
     private ICustomerDatabase customerDatabase;
 
-    public BillingSystem(TimeGetter timeGetter, IBillGenerator billGenerator, ITariffLibrary tariffLibrary, ICustomerDatabase customerDatabase) {
+    public BillingSystem(ITimeGetter timeGetter, IBillGenerator billGenerator, ITariffLibrary tariffLibrary, ICustomerDatabase customerDatabase) {
     	this.timeGetter = timeGetter;
         this.billGenerator = billGenerator;
         this.tariffLibrary = tariffLibrary;

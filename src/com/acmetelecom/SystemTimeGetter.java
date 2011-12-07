@@ -1,6 +1,6 @@
 package com.acmetelecom;
 
-public class SystemTimeGetter implements TimeGetter{
+public class SystemTimeGetter implements ITimeGetter{
 
 	public long getCurrentTime() {
 		return System.currentTimeMillis();

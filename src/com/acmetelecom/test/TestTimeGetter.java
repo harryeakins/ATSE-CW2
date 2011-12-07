@@ -1,10 +1,10 @@
 package com.acmetelecom.test;
 
-import com.acmetelecom.TimeGetter;
+import com.acmetelecom.ITimeGetter;
 
 import java.util.Date;
 
-public class TestTimeGetter implements TimeGetter {
+public class TestTimeGetter implements ITimeGetter {
 
 	private Date time;
 	

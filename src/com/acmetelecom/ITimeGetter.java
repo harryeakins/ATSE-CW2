@@ -1,5 +1,5 @@
 package com.acmetelecom;
 
-public interface TimeGetter {
+public interface ITimeGetter {
 	long getCurrentTime();
 }
