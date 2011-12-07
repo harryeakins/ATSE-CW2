@@ -2,8 +2,11 @@ package com.acmetelecom.test;
 
 import com.acmetelecom.BillGenerator;
 import com.acmetelecom.BillingSystem;
+import com.acmetelecom.TimeGetter;
 import com.acmetelecom.customer.CentralCustomerDatabase;
 import com.acmetelecom.customer.Tariff;
+import com.acmetelecom.customer.TariffLibrary;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,9 +28,9 @@ public class BillingSystemTest {
 
     DateFormat df;
     BillingSystem billingSystem;
-    TestTimeGetter timeGetter;
-    FakeTariffLibrary tariffLibrary = new FakeTariffLibrary();
-    FakeBillGenerator billGenerator = new FakeBillGenerator();
+    TimeGetter timeGetter;
+    TariffLibrary tariffLibrary = new FakeTariffLibrary();
+    BillGenerator billGenerator = new FakeBillGenerator();
 
     @Before
     public void setUp() throws Exception {
