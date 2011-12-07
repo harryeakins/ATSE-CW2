@@ -59,7 +59,7 @@ public class MockBillingSystemTest {
 		customers.add(customer);
 		
 		context.checking(new Expectations() {{
-    		atLeast(1).of(billGenerator).send(with(any(CustomerInterface.class)), with(any(List.class)), with(any(BigDecimal.class)));
+    		oneOf(billGenerator).send(with(same(customer)), with(any(List.class)), with(any(BigDecimal.class)));
     		
     		allowing(tariffLibrary).tariffFor(with(any(CustomerInterface.class)));
     		will(returnValue(Tariff.Standard));
@@ -72,7 +72,6 @@ public class MockBillingSystemTest {
 		}});
 		
 		billingSystem.createCustomerBills();
-		
 	}
 }
 
