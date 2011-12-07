@@ -2,13 +2,13 @@ package com.acmetelecom.fakes;
 
 import com.acmetelecom.IPrinter;
 
-public class FitPrinter implements IPrinter {
+public class FakePrinter implements IPrinter {
 	
     private StringBuilder output = new StringBuilder();
     private String currentCustomer;
     private String currentPricePlan;
 
-    public FitPrinter() {
+    public FakePrinter() {
 	}
 
     public void printItem(String time, String callee, String duration, String cost) {
