@@ -1,4 +1,4 @@
-package com.acmetelecom.fakes;
+package fakes;
 
 import java.util.HashMap;
 

@@ -1,9 +1,9 @@
 import com.acmetelecom.SystemBillGenerator;
 import com.acmetelecom.BillingSystem;
-import com.acmetelecom.fakes.FakeCustomerDatabase;
-import com.acmetelecom.fakes.FakeTariffLibrary;
-import com.acmetelecom.fakes.FakePrinter;
 import com.acmetelecom.test.TestTimeGetter;
+import fakes.FakeCustomerDatabase;
+import fakes.FakeTariffLibrary;
+import fakes.FakePrinter;
 
 public class SystemUnderTest {
 

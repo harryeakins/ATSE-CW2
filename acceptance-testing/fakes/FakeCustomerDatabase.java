@@ -1,4 +1,4 @@
-package com.acmetelecom.fakes;
+package fakes;
 
 import com.acmetelecom.ICustomer;
 import com.acmetelecom.ICustomerDatabase;
