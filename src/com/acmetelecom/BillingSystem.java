@@ -12,11 +12,11 @@ public class BillingSystem {
 
     private List<CallEvent> callLog = new ArrayList<CallEvent>();
     private TimeGetter timeGetter;
-    private BillGenerator billGenerator;
-    private TariffLibraryInterface tariffLibrary;
-    private CustomerDatabaseInterface customerDatabase;
+    private IBillGenerator billGenerator;
+    private ITariffLibrary tariffLibrary;
+    private ICustomerDatabase customerDatabase;
 
-    public BillingSystem(TimeGetter timeGetter, BillGenerator billGenerator, TariffLibraryInterface tariffLibrary, CustomerDatabaseInterface customerDatabase) {
+    public BillingSystem(TimeGetter timeGetter, IBillGenerator billGenerator, ITariffLibrary tariffLibrary, ICustomerDatabase customerDatabase) {
     	this.timeGetter = timeGetter;
         this.billGenerator = billGenerator;
         this.tariffLibrary = tariffLibrary;
@@ -32,14 +32,14 @@ public class BillingSystem {
     }
 
     public void createCustomerBills() {
-        List<CustomerInterface> customers = customerDatabase.getCustomers();
-        for (CustomerInterface customer : customers) {
+        List<ICustomer> customers = customerDatabase.getCustomers();
+        for (ICustomer customer : customers) {
             createBillFor(customer);
         }
         callLog.clear();
     }
 
-    public void createBillFor(CustomerInterface customer) {
+    public void createBillFor(ICustomer customer) {
         List<CallEvent> customerEvents = new ArrayList<CallEvent>();
         for (CallEvent callEvent : callLog) {
             if (callEvent.getCaller().equals(customer.getPhoneNumber())) {

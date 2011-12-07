@@ -2,7 +2,7 @@ package com.acmetelecom;
 
 import com.acmetelecom.customer.Customer;
 
-public class SystemCustomer implements CustomerInterface {
+public class SystemCustomer implements ICustomer {
 	final private Customer customer;
 	public SystemCustomer(Customer customer) {
 		this.customer = customer;

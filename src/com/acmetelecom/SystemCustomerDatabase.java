@@ -7,7 +7,7 @@ import java.util.List;
 import com.acmetelecom.customer.Customer;
 import com.acmetelecom.customer.CustomerDatabase;
 
-public class SystemCustomerDatabase implements CustomerDatabaseInterface {
+public class SystemCustomerDatabase implements ICustomerDatabase {
 	final private CustomerDatabase db;
 	
 	public SystemCustomerDatabase(CustomerDatabase db) {
@@ -15,8 +15,8 @@ public class SystemCustomerDatabase implements CustomerDatabaseInterface {
 	}
 	
 	@Override
-	public List<CustomerInterface> getCustomers() {
-		ArrayList<CustomerInterface> customers = new ArrayList<CustomerInterface>();
+	public List<ICustomer> getCustomers() {
+		ArrayList<ICustomer> customers = new ArrayList<ICustomer>();
 		List<Customer> customerList = db.getCustomers();
 		Iterator<Customer> iter = customerList.iterator();
 		while (iter.hasNext()) {
