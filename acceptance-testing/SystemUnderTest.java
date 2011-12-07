@@ -2,8 +2,10 @@ import com.acmetelecom.SystemBillGenerator;
 import com.acmetelecom.BillingSystem;
 import com.acmetelecom.SystemCustomerDatabase;
 import com.acmetelecom.SystemTariffLibrary;
+import com.acmetelecom.customer.CentralCustomerDatabase;
+import com.acmetelecom.customer.CentralTariffDatabase;
 import com.acmetelecom.fakes.FakeCustomerDatabase;
-import com.acmetelecom.fakes.FakePrinter;
+import com.acmetelecom.fakes.FitPrinter;
 import com.acmetelecom.test.FakeTariffLibrary;
 import com.acmetelecom.test.TestTimeGetter;
 
@@ -15,14 +17,8 @@ import com.acmetelecom.test.TestTimeGetter;
  * To change this template use File | Settings | File Templates.
  */
 public class SystemUnderTest {
-
-    public static final TestTimeGetter timeGetter = new TestTimeGetter();
-    public static final FakePrinter printer = new FakePrinter();
-    public static final FakeTariffLibrary library = new FakeTariffLibrary();
-    public static final FakeCustomerDatabase database = new FakeCustomerDatabase();
-	public static final BillingSystem billingSystem = new BillingSystem(timeGetter, 
-																		new SystemBillGenerator(printer),
-																		new SystemTariffLibrary(library),
-                                                                        new SystemCustomerDatabase(database));
-
+	public static final BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(), 
+																		new SystemBillGenerator( new FitPrinter()),
+																		new SystemTariffLibrary(CentralTariffDatabase.getInstance()),
+                                                                        new SystemCustomerDatabase(CentralCustomerDatabase.getInstance()));
 }

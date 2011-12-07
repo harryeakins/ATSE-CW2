@@ -3,7 +3,7 @@ package com.acmetelecom;
 import com.acmetelecom.customer.Tariff;
 import com.acmetelecom.customer.TariffLibrary;
 
-public class SystemTariffLibrary implements TariffLibraryInterface {
+public class SystemTariffLibrary implements ITariffLibrary {
 
 	final private TariffLibrary tariffLibrary;
 	
@@ -12,7 +12,7 @@ public class SystemTariffLibrary implements TariffLibraryInterface {
 	}
 	
 	@Override
-	public Tariff tariffFor(CustomerInterface customer) {
+	public Tariff tariffFor(ICustomer customer) {
 		return tariffLibrary.tarriffFor(((SystemCustomer)customer).getCustomer());
 	}
 

@@ -1,6 +1,6 @@
 package com.acmetelecom.test;
 
-import com.acmetelecom.BillGenerator;
+import com.acmetelecom.IBillGenerator;
 import com.acmetelecom.BillingSystem;
 import com.acmetelecom.TimeGetter;
 import com.acmetelecom.customer.CentralCustomerDatabase;

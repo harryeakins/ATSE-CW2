@@ -13,17 +13,17 @@ import org.junit.runner.RunWith;
 
 import com.acmetelecom.Call;
 import com.acmetelecom.CallEvent;
-import com.acmetelecom.CustomerInterface;
+import com.acmetelecom.ICustomer;
 import com.acmetelecom.LineItem;
-import com.acmetelecom.Printer;
+import com.acmetelecom.IPrinter;
 import com.acmetelecom.SystemBillGenerator;
 
 @RunWith(JMock.class)
 public class SystemBillGeneratorTest {
 	public final Mockery context = new Mockery();
 	SystemBillGenerator billGenerator;
-	final Printer printer = context.mock(Printer.class);
-	final CustomerInterface customer = context.mock(CustomerInterface.class);
+	final IPrinter printer = context.mock(IPrinter.class);
+	final ICustomer customer = context.mock(ICustomer.class);
 	
 	@Before
     public void setUp() throws Exception {

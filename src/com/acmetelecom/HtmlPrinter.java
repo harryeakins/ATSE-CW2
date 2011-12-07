@@ -1,6 +1,6 @@
 package com.acmetelecom;
 
-public class HtmlPrinter implements Printer {
+public class HtmlPrinter implements IPrinter {
 
     public HtmlPrinter() {
     }

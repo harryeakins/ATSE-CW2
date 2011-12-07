@@ -13,11 +13,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.acmetelecom.BillGenerator;
+import com.acmetelecom.IBillGenerator;
 import com.acmetelecom.BillingSystem;
-import com.acmetelecom.CustomerDatabaseInterface;
-import com.acmetelecom.CustomerInterface;
-import com.acmetelecom.TariffLibraryInterface;
+import com.acmetelecom.ICustomerDatabase;
+import com.acmetelecom.ICustomer;
+import com.acmetelecom.ITariffLibrary;
 import com.acmetelecom.customer.*;
 
 @RunWith(JMock.class)
@@ -27,10 +27,10 @@ public class MockBillingSystemTest {
     DateFormat df;
     BillingSystem billingSystem;
     TestTimeGetter timeGetter;
-    final TariffLibraryInterface tariffLibrary = context.mock(TariffLibraryInterface.class);
-    final BillGenerator billGenerator = context.mock(BillGenerator.class);
-    final CustomerDatabaseInterface customerDatabase = context.mock(CustomerDatabaseInterface.class);
-    final CustomerInterface customer = context.mock(CustomerInterface.class);
+    final ITariffLibrary tariffLibrary = context.mock(ITariffLibrary.class);
+    final IBillGenerator billGenerator = context.mock(IBillGenerator.class);
+    final ICustomerDatabase customerDatabase = context.mock(ICustomerDatabase.class);
+    final ICustomer customer = context.mock(ICustomer.class);
 
     @Before
     public void setUp() throws Exception {
@@ -55,13 +55,13 @@ public class MockBillingSystemTest {
 		timeGetter.set(df.parse("2011, 11, 29, 14, 20, 0"));
 		billingSystem.callCompleted("447711232343", "447766814143");
 		
-		final List<CustomerInterface> customers = new ArrayList<CustomerInterface>();
+		final List<ICustomer> customers = new ArrayList<ICustomer>();
 		customers.add(customer);
 		
 		context.checking(new Expectations() {{
     		oneOf(billGenerator).send(with(same(customer)), with(any(List.class)), with(any(BigDecimal.class)));
     		
-    		allowing(tariffLibrary).tariffFor(with(any(CustomerInterface.class)));
+    		allowing(tariffLibrary).tariffFor(with(any(ICustomer.class)));
     		will(returnValue(Tariff.Standard));
     		
     		allowing(customerDatabase).getCustomers();

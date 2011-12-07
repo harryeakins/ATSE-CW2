@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FilePrinter implements Printer {
+public class FilePrinter implements IPrinter {
 
 	// Stream to write file
     BufferedWriter out;	
