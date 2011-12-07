@@ -53,7 +53,7 @@ public class TheGeneratedBill extends RowFixture {
         for (String line : SystemUnderTest.printer.output().split("\n")) {
             rows.add(new Row(line));
         }
-        //rows.add(new Row("27/11/11 09:00", "447766814143", "1140:00", "244.80"));
+
         return rows.toArray();
     }
 }

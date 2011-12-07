@@ -1,12 +1,10 @@
-package com.acmetelecom.test;
+package com.acmetelecom.fakes;
+
+import java.util.HashMap;
 
 import com.acmetelecom.ICustomer;
 import com.acmetelecom.ITariffLibrary;
-import com.acmetelecom.customer.Customer;
 import com.acmetelecom.customer.Tariff;
-import com.acmetelecom.customer.TariffLibrary;
-
-import java.util.HashMap;
 
 public class FakeTariffLibrary implements ITariffLibrary {
     HashMap<String,Tariff> map;

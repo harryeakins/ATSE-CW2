@@ -17,8 +17,14 @@ import com.acmetelecom.test.TestTimeGetter;
  * To change this template use File | Settings | File Templates.
  */
 public class SystemUnderTest {
-	public static final BillingSystem billingSystem = new BillingSystem(new TestTimeGetter(), 
-																		new SystemBillGenerator( new FitPrinter()),
-																		new SystemTariffLibrary(CentralTariffDatabase.getInstance()),
-                                                                        new SystemCustomerDatabase(CentralCustomerDatabase.getInstance()));
+
+    public static final TestTimeGetter timeGetter = new TestTimeGetter();
+    public static final FitPrinter printer = new FitPrinter();
+    public static final SystemTariffLibrary library = new SystemTariffLibrary(CentralTariffDatabase.getInstance());
+    public static final FakeCustomerDatabase database = new FakeCustomerDatabase();
+	public static final BillingSystem billingSystem = new BillingSystem(timeGetter, 
+																		new SystemBillGenerator(printer),
+																		library,
+                                                                        database);
+
 }

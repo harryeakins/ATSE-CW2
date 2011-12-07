@@ -1,4 +1,7 @@
+import com.acmetelecom.SystemCustomer;
 import com.acmetelecom.customer.Customer;
+import com.acmetelecom.fakes.FakeCustomer;
+
 import fit.ColumnFixture;
 import fit.Parse;
 
@@ -25,7 +28,7 @@ public class GivenTheFollowingCustomers extends ColumnFixture {
 
 	@Override
 	public void execute() throws Exception {
-        SystemUnderTest.database.addCustomer(new Customer(FullName,PhoneNumber,PricePlan));
+        SystemUnderTest.database.addCustomer(new SystemCustomer(new Customer(FullName,PhoneNumber,PricePlan)));
 	}
 
     @Override
