@@ -7,13 +7,6 @@ import fit.Parse;
 
 import java.math.BigDecimal;
 
-/**
- * Created by IntelliJ IDEA.
- * User: elatier
- * Date: 05/12/11
- * Time: 18:00
- * To change this template use File | Settings | File Templates.
- */
 public class GivenTheFollowingCustomers extends ColumnFixture {
     public String PhoneNumber;
 	public String FullName;

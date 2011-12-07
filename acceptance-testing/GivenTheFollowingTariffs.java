@@ -2,13 +2,6 @@ import fit.ColumnFixture;
 
 import java.math.BigDecimal;
 
-/**
- * Created by IntelliJ IDEA.
- * User: elatier
- * Date: 05/12/11
- * Time: 17:42
- * To change this template use File | Settings | File Templates.
- */
 public class GivenTheFollowingTariffs extends ColumnFixture {
     public String TariffName;
 	public BigDecimal PeakRate;

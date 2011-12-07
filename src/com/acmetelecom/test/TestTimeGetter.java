@@ -2,8 +2,6 @@ package com.acmetelecom.test;
 
 import com.acmetelecom.TimeGetter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
 
 public class TestTimeGetter implements TimeGetter {
